@@ -6,7 +6,7 @@ import Layout from "../components/layout"
 import SEO from "../components/seo"
 import { rhythm } from "../utils/typography"
 
-class BlogIndex extends React.Component {
+class Home extends React.Component {
   render() {
     const { data } = this.props
     const siteTitle = data.site.siteMetadata.title
@@ -14,13 +14,19 @@ class BlogIndex extends React.Component {
 
     return (
       <>
-        <SEO title="All posts" />
-        <Bio />
+        <SEO title="Home" />
+        <div style={{ marginTop: rhythm(2) }}>
+          <Bio />
+        </div>
+        <p>Feel free to check out my <Link to="/cv">CV</Link>.</p>
+        <hr />
+        <h3>Recent posts:</h3>
         {posts.map(({ node }) => {
           const title = node.frontmatter.title || node.fields.slug
           return (
             <article key={node.fields.slug}>
               <header>
+                <small>{node.frontmatter.date}</small>
                 <h3
                   style={{
                     marginBottom: rhythm(1 / 4),
@@ -30,7 +36,6 @@ class BlogIndex extends React.Component {
                     {title}
                   </Link>
                 </h3>
-                <small>{node.frontmatter.date}</small>
               </header>
               <section>
                 <p
@@ -47,7 +52,7 @@ class BlogIndex extends React.Component {
   }
 }
 
-export default BlogIndex
+export default Home
 
 export const pageQuery = graphql`
   query {
@@ -56,7 +61,10 @@ export const pageQuery = graphql`
         title
       }
     }
-    allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC }) {
+    allMarkdownRemark(
+      filter: { fileAbsolutePath: {regex : "\/blog/"} },
+      sort: { fields: [frontmatter___date], order: DESC }
+    ) {
       edges {
         node {
           excerpt

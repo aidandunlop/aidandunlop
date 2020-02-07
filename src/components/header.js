@@ -2,10 +2,11 @@ import React, { useContext, useState } from "react"
 import PropTypes from "prop-types"
 import Image from "gatsby-image"
 import { useStaticQuery, graphql, Link } from "gatsby"
-import { rhythm, scale } from "../utils/typography"
 import styled from "styled-components"
+import Tooltip from "rc-tooltip"
 import { ThemeManagerContext } from "gatsby-styled-components-dark-mode"
-import DiscoBall from "./disco-ball"
+
+import { rhythm, scale } from "../utils/typography"
 
 const StyledLink = styled(Link)`
   :hover {
@@ -22,7 +23,6 @@ const StyledLink = styled(Link)`
 
 const StyledHeader = styled.header`
   display: flex;
-  margin-bottom: ${rhythm(2.5)};
   align-items: center;
   justify-content: center;
 `
@@ -38,9 +38,9 @@ const StyledTitle = styled.h1`
   }
 `
 const Emoji = styled.div`
-  ${scale(0.8)}
+  ${scale(0.6)}
   @media only screen and (min-width: 768px) {
-    ${scale(1.5)}
+    ${scale(1.2)}
   }
   cursor: pointer;
   margin-left: auto;
@@ -50,16 +50,44 @@ const Emoji = styled.div`
     margin: 0;
   }
 `
+const Tip = styled.div`
+  border-radius: 5%;
+  background: ${props => props.theme.secondaryColor};
+  color: ${props => props.theme.mainColor};
+  padding: 6px 10px;
+
+  ::after {
+    content: " ";
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: transparent transparent ${props => props.theme.secondaryColor}
+      transparent;
+  }
+`
+
 const DarkModeToggle = () => {
   const themeContext = useContext(ThemeManagerContext)
   return (
-    <Emoji
-      role="img"
-      aria-label="toggle theme"
-      onClick={() => themeContext.toggleDark()}
+    <Tooltip
+      placement="bottom"
+      trigger={["hover"]}
+      overlay={<Tip>toggle theme</Tip>}
+      defaultVisible={false}
+      destroyTooltipOnHide={true}
+      overlayStyle={{ position: "absolute" }}
     >
-      {themeContext.isDark ? <p>&#127773;</p> : <p>&#127770;</p>}
-    </Emoji>
+      <Emoji
+        role="img"
+        aria-label="toggle theme"
+        onClick={() => themeContext.toggleDark()}
+      >
+        {themeContext.isDark ? <p>&#127773;</p> : <p>&#127770;</p>}
+      </Emoji>
+    </Tooltip>
   )
 }
 
@@ -87,25 +115,9 @@ const Header = ({ charactersToColour = 2 }) => {
   const { title, author } = data.site.siteMetadata
   const firstPart = title.substring(0, charactersToColour)
   const secondPart = title.substring(charactersToColour)
-  const [disco, showDisco] = useState(false)
   return (
     <>
       <StyledHeader>
-        <Image
-          fixed={data.avatar.childImageSharp.fixed}
-          alt={author}
-          style={{
-            // make styled component
-            marginRight: rhythm(1 / 2),
-            marginBottom: 0,
-            minWidth: 75,
-            cursor: "pointer",
-          }}
-          imgStyle={{
-            borderRadius: `50%`,
-          }}
-          onClick={() => showDisco(!disco)}
-        />
         <StyledLink to="/">
           <StyledTitle>
             <span>{firstPart}</span>
@@ -114,7 +126,6 @@ const Header = ({ charactersToColour = 2 }) => {
         </StyledLink>
         <DarkModeToggle />
       </StyledHeader>
-      {disco && <DiscoBall />}
     </>
   )
 }

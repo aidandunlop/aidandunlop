@@ -2,12 +2,12 @@ import React from "react"
 import { useStaticQuery, graphql } from "gatsby"
 import Image from "gatsby-image"
 import styled, { css } from "styled-components"
-import { rhythm } from "../utils/typography"
+
 import nightfever from "../../content/assets/nightfever.mp3"
 
 const animation = css`
   transform: translate(-50%, -50%);
-  animation: slide-bottom 7s ease-out both;
+  animation: slide-bottom 7s ease-out both, lightshow 10s infinite;
   @keyframes slide-bottom {
     0% {
       transform: translateY(0);
@@ -34,7 +34,7 @@ const Pole = styled.div`
   width: 10px;
   height: 405px;
   position: fixed;
-  top: -470px;
+  top: -490px;
   left: calc(50% + 30px);
   ${animation}
 `

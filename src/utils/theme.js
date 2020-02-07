@@ -8,13 +8,13 @@ const baseTheme = {
 const lightTheme = {
   ...baseTheme,
   mainColor: "#FFF",
-  secondaryColor: "#000",
+  secondaryColor: "#1f1f1f",
   toggleShadowColor: "#40C9A2",
 }
 
 const darkTheme = {
   ...baseTheme,
-  mainColor: "#000",
+  mainColor: "#1f1f1f",
   secondaryColor: "#FFF",
   toggleShadowColor: "#f5d142",
 }
@@ -26,7 +26,7 @@ const GlobalStyle = createGlobalStyle`
     color: ${props => props.theme.secondaryColor};
     transition: background-color 2s, color 2s;
   }
-  p, h1, h2, h3, h4, h5, h6, small, label {
+  p, h1, h2, h3, h4, h5, h6, small, label, li, ul {
     transition: color 2s;
     color: ${props => props.theme.secondaryColor};
   }
@@ -40,6 +40,11 @@ const GlobalStyle = createGlobalStyle`
   ::selection {
     background-color: ${props => props.theme.selectionColor};
     color: ${props => props.theme.secondaryColor};
+  }
+  
+  hr {
+    background-color: ${props => props.theme.secondaryColor};
+    opacity: 0.5;
   }
 `
 

@@ -5,10 +5,11 @@ exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions
 
   const blogPost = path.resolve(`./src/templates/blog-post.js`)
-  const result = await graphql(
+  const postResults = await graphql(
     `
       {
         allMarkdownRemark(
+          filter: { fileAbsolutePath: { regex: "/blog/" } }
           sort: { fields: [frontmatter___date], order: DESC }
           limit: 1000
         ) {
@@ -27,12 +28,12 @@ exports.createPages = async ({ graphql, actions }) => {
     `
   )
 
-  if (result.errors) {
-    throw result.errors
+  if (postResults.errors) {
+    throw postResults.errors
   }
 
   // Create blog posts pages.
-  const posts = result.data.allMarkdownRemark.edges
+  const posts = postResults.data.allMarkdownRemark.edges
 
   posts.forEach((post, index) => {
     const previous = index === posts.length - 1 ? null : posts[index + 1].node
@@ -45,6 +46,45 @@ exports.createPages = async ({ graphql, actions }) => {
         slug: post.node.fields.slug,
         previous,
         next,
+      },
+    })
+  })
+
+  const pageTemplate = path.resolve(`./src/templates/page.js`)
+  const pageResults = await graphql(
+    `
+      {
+        allMarkdownRemark(
+          filter: { fileAbsolutePath: { regex: "/pages/" } }
+          limit: 1000
+        ) {
+          edges {
+            node {
+              fields {
+                slug
+              }
+              frontmatter {
+                title
+              }
+            }
+          }
+        }
+      }
+    `
+  )
+
+  if (pageResults.errors) {
+    throw pageResults.errors
+  }
+
+  // Create generic pages like cv.
+  const pages = pageResults.data.allMarkdownRemark.edges
+  pages.forEach(page => {
+    createPage({
+      path: page.node.fields.slug,
+      component: pageTemplate,
+      context: {
+        slug: page.node.fields.slug,
       },
     })
   })
