@@ -29,6 +29,7 @@ async function createPDF(outputFile, port = 9000) {
       await browser.close();
       console.log('Created PDF.');
       spawn('kill', [server.pid]);
+      process.exit();
     }
   });
 }
