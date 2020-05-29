@@ -65,11 +65,11 @@
     "url": "git+https://github.com/gatsbyjs/gatsby-starter-blog.git"
   },
   "scripts": {
-    "build_with_cv": "yarn build && node -e 'require(`./src/utils/makeCV`).makeCV(9000)'",
+    "build_with_cv": "yarn build && yarn make_cv",
     "build": "gatsby build",
-    "dev_with_cv": "node -e 'require(`./src/utils/makeCV`).makeCV(8000)'",
     "dev": "gatsby develop",
     "format": "prettier --write \"**/*.{js,jsx,json,md}\"",
+    "make_cv": "node -e 'require(`./src/utils/makeCV`).makeCV(9000)'",
     "serve": "gatsby serve",
     "start": "npm run develop",
     "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing \""
