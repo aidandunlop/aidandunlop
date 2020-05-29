@@ -47,7 +47,7 @@ const GlobalStyle = createGlobalStyle`
     transition: background-color 2s, color 2s;
     
     @media print {
-      font-size: 11px;
+      font-size: 10px;
       -webkit-print-color-adjust: exact;
     }
   }
