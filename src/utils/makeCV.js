@@ -22,7 +22,9 @@ async function createPDF(outputFile, port = 9000) {
     if (data.includes(serverStartedString)) {
       const host = `http://localhost:${port}/cv`;
       console.log('Creating PDF from...', host);
-      const browser = await puppeteer.launch();
+      const browser = await puppeteer.launch({
+        args: ['--no-sandbox', '--disable-setuid-sandbox', '--font-render-hinting=none'],
+      });
       const page = await browser.newPage();
       await page.goto(host, { waitUntil: 'networkidle2' });
       await page.pdf({ path: outputFile, format: 'A4' });

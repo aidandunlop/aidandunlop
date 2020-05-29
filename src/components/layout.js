@@ -11,7 +11,7 @@ const GlobalWrapper = styled.div`
   padding: ${rhythm(1.5)} ${rhythm(3 / 4)};
   
   @media print {
-    padding: 0 ${rhythm(0.3)};
+    padding: ${rhythm(0.7)} 0;
   }
 `;
 
