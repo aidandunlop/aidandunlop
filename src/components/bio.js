@@ -1,26 +1,32 @@
-/**
- * Bio component that queries for data
- * with Gatsby's useStaticQuery component
- *
- * See: https://www.gatsbyjs.org/docs/use-static-query/
- */
+import React, { useState } from 'react';
+import { useStaticQuery, graphql } from 'gatsby';
+import styled from 'styled-components';
+import DiscoBall from './disco-ball';
 
-import React from "react"
-import { useStaticQuery, graphql } from "gatsby"
-import Image from "gatsby-image"
+const DiscoLink = styled.span`
+  :hover {
+    color: ${(props) => props.theme.linkColor};
+    cursor: pointer;
+    text-decoration: underline;
+  }
+`;
 
-import { rhythm } from "../utils/typography"
+const StopDiscoBanner = styled.div`
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 50px;
+  background: #ab0000;
+  z-index: 100;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
 
 const Bio = () => {
   const data = useStaticQuery(graphql`
     query BioQuery {
-      avatar: file(absolutePath: { regex: "/profile-pic.jpg/" }) {
-        childImageSharp {
-          fixed(width: 50, height: 50) {
-            ...GatsbyImageSharpFixed
-          }
-        }
-      }
       site {
         siteMetadata {
           author
@@ -30,39 +36,44 @@ const Bio = () => {
         }
       }
     }
-  `)
+  `);
 
-  const { author, social } = data.site.siteMetadata
+  const { author, social } = data.site.siteMetadata;
+  const [disco, showDisco] = useState(false);
+  // TODO: move stuff to md file
   return (
-    <div
-      style={{
-        display: `flex`,
-        marginBottom: rhythm(2.5),
-      }}
-    >
-      <Image
-        fixed={data.avatar.childImageSharp.fixed}
-        alt={author}
-        style={{
-          marginRight: rhythm(1 / 2),
-          marginBottom: 0,
-          minWidth: 50,
-          borderRadius: `100%`,
-        }}
-        imgStyle={{
-          borderRadius: `50%`,
-        }}
-      />
+    <>
       <p>
-        Written by <strong>{author}</strong> who lives and works in San
-        Francisco building useful things.
-        {` `}
+        Hello! I&apos;m
+        {' '}
+        <strong>{author}</strong>
+        , a software engineer with a keen
+        interest in Artificial Intelligence, Computer Vision, and Machine
+        Learning.
+      </p>
+      <p>
+        On the side I enjoy bouldering, travelling, and
+        {' '}
+        <DiscoLink onClick={() => showDisco(!disco)}>disco</DiscoLink>
+        .
+        {' '}
         <a href={`https://twitter.com/${social.twitter}`}>
-          You should follow him on Twitter
+          You should follow me on Twitter!
         </a>
       </p>
-    </div>
-  )
-}
+      {disco
+      && (
+      <>
+        <DiscoBall />
+        <StopDiscoBanner>
+          <button type="button" onClick={() => showDisco(false)}>
+            Stop this Aidan it&apos;s annoying
+          </button>
+        </StopDiscoBanner>
+      </>
+      )}
+    </>
+  );
+};
 
-export default Bio
+export default Bio;
