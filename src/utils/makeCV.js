@@ -1,6 +1,6 @@
 /* eslint-disable no-console */
 const puppeteer = require('puppeteer');
-const { exec, spawn } = require('child_process');
+const { exec } = require('child_process');
 const kill = require('tree-kill');
 
 const portConfigMap = {
