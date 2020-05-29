@@ -10,7 +10,7 @@ const portConfigMap = {
 async function createPDF(outputFile, port = 9000) {
   console.log('Creating PDF, saving to:', outputFile);
   const { command, serverStartedString } = portConfigMap[port];
-  const server = exec(command, { detached: true });
+  const server = exec(command, { detached: true, stdio: 'ignore' });
 
   server.stderr.on('data', (data) => {
     console.log(`stderr: ${data}`);
