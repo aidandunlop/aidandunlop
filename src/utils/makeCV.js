@@ -1,6 +1,6 @@
 /* eslint-disable no-console */
 const puppeteer = require('puppeteer');
-const { exec } = require('child_process');
+const { exec, spawn } = require('child_process');
 
 const portConfigMap = {
   9000: { command: 'yarn serve', serverStartedString: 'gatsby serve running at:' },
@@ -28,7 +28,7 @@ async function createPDF(outputFile, port = 9000) {
       await page.pdf({ path: outputFile, format: 'A4' });
       await browser.close();
       console.log('Created PDF.');
-      server.kill();
+      spawn('kill', [server.pid]);
     }
   });
 }
