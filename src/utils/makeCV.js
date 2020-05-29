@@ -1,6 +1,7 @@
 /* eslint-disable no-console */
 const puppeteer = require('puppeteer');
 const { exec, spawn } = require('child_process');
+const kill = require('tree-kill');
 
 const portConfigMap = {
   9000: { command: 'yarn serve', serverStartedString: 'gatsby serve running at:' },
@@ -23,6 +24,7 @@ async function createPDF(outputFile, port = 9000) {
       const host = `http://localhost:${port}/cv`;
       console.log('Creating PDF from...', host);
       const browser = await puppeteer.launch({
+        headless: true,
         args: ['--no-sandbox', '--disable-setuid-sandbox', '--font-render-hinting=none'],
       });
       const page = await browser.newPage();
@@ -30,8 +32,7 @@ async function createPDF(outputFile, port = 9000) {
       await page.pdf({ path: outputFile, format: 'A4' });
       await browser.close();
       console.log('Created PDF.');
-      spawn('kill', [server.pid]);
-      process.exit();
+      kill([server.pid]);
     }
   });
 }
