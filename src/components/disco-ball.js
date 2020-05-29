@@ -4,11 +4,9 @@ import Image from 'gatsby-image';
 import styled, { css } from 'styled-components';
 import { ThemeManagerContext } from 'gatsby-styled-components-dark-mode';
 
-// import nightfever from '../../content/assets/nightfever.mp3';
-
 const poleAnimation = css`
   transform: translate(-50%, -50%);
-  animation: slide-bottom 7s ease-out both, lightshow 10s infinite;
+  animation: slide-bottom 7s ease-out both;
   @keyframes slide-bottom {
     0% {
       transform: translateY(0);
