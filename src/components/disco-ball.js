@@ -1,11 +1,12 @@
-import React from "react"
-import { useStaticQuery, graphql } from "gatsby"
-import Image from "gatsby-image"
-import styled, { css } from "styled-components"
+import React, { useContext, useEffect } from 'react';
+import { useStaticQuery, graphql } from 'gatsby';
+import Image from 'gatsby-image';
+import styled, { css } from 'styled-components';
+import { ThemeManagerContext } from 'gatsby-styled-components-dark-mode';
 
-import nightfever from "../../content/assets/nightfever.mp3"
+// import nightfever from '../../content/assets/nightfever.mp3';
 
-const animation = css`
+const poleAnimation = css`
   transform: translate(-50%, -50%);
   animation: slide-bottom 7s ease-out both, lightshow 10s infinite;
   @keyframes slide-bottom {
@@ -16,7 +17,7 @@ const animation = css`
       transform: translateY(50vh);
     }
   }
-`
+`;
 
 const Ball = styled(Image)`
   width: 75px;
@@ -26,8 +27,9 @@ const Ball = styled(Image)`
   border-radius: 100%;
   box-shadow: 10px 35px 45px 35px blue, 0px -35px 45px 35px red,
     -35px 10px 45px 35px green;
-  ${animation}
-`
+  ${poleAnimation}
+  z-index: 10;
+  `;
 
 const Pole = styled.div`
   background: black;
@@ -36,8 +38,35 @@ const Pole = styled.div`
   position: fixed;
   top: -490px;
   left: calc(50% + 30px);
-  ${animation}
-`
+  ${poleAnimation}
+  z-index: 10;
+`;
+
+const videoAnimation = css`
+  @keyframes rotation {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(359deg);
+    }
+  }
+  animation: rotation 10s infinite linear;
+`;
+
+const VideoWrapper = styled.div`
+  iframe {
+    position: absolute;
+    padding: 0;
+    margin: 0;
+    bottom: 0;
+    left: 0;
+    width: '100%',
+    maxWidth: '600px',
+    margin: '0 auto',
+  }
+  ${videoAnimation};
+`;
 
 const DiscoBall = () => {
   const data = useStaticQuery(graphql`
@@ -50,16 +79,53 @@ const DiscoBall = () => {
         }
       }
     }
-  `)
+  `);
+
+  const themeContext = useContext(ThemeManagerContext);
+
+  useEffect(() => {
+    const flashTheme = setInterval(() => {
+      themeContext.toggleDark();
+    }, 500);
+    return function cleanup() {
+      clearInterval(flashTheme);
+    };
+  });
+
   return (
     <>
       <Pole />
-      <Ball fixed={data.avatar.childImageSharp.fixed} alt={"discoball"} />
-      <audio autoPlay loop preload="auto">
-        <source src={nightfever} type="audio/mpeg" />
-      </audio>
+      <Ball fixed={data.avatar.childImageSharp.fixed} alt="discoball" />
+      <VideoWrapper>
+        <div
+          style={{
+            position: 'relative',
+            overflow: 'hidden',
+            paddingTop: '56.25%',
+            height: '0',
+          }}
+        >
+          <iframe
+            title="nightfever"
+            style={{
+              position: 'absolute',
+              top: '0',
+              left: '0',
+              width: '100%',
+              height: '100%',
+              border: '0',
+              maxWidth: '100%',
+            }}
+            src="https://www.youtube.com/embed/SkypZuY6ZvA?controls=0&autoplay=1"
+            frameBorder="0"
+            gesture="media"
+            allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+            allowFullScreen
+          />
+        </div>
+      </VideoWrapper>
     </>
-  )
-}
+  );
+};
 
-export default DiscoBall
+export default DiscoBall;

@@ -1,98 +1,121 @@
+/* eslint-disable global-require */
+/* eslint-disable import/no-dynamic-require */
+const site = 'https://aidandunlop.com/';
 module.exports = {
   siteMetadata: {
-    title: `aidunlop`,
-    author: `Aidan Dunlop`,
-    description: `Personal site for Aidan Dunlop.`,
-    siteUrl: `https://aidunlop.com/`,
+    title: 'aidandunlop',
+    author: 'Aidan Dunlop',
+    description: 'Personal site for Aidan Dunlop, Software Engineer.',
+    siteUrl: site,
     social: {
-      twitter: `aidunlop`,
+      twitter: 'aidunlop',
+      email: { display: 'aidandunlop@gmail.com', url: 'mailto:aidandunlop@gmail.com', icon: 'FaEnvelope' },
+      github: { display: 'aidandunlop', url: 'https://github.com/aidandunlop', icon: 'FaGithub' },
+      linkedin: { display: 'aidandunlop', url: 'https://www.linkedin.com/in/aidandunlop/', icon: 'FaLinkedin' },
+      website: {
+        display: 'aidandunlop.com', url: site, icon: 'FaGlobe', renderOnPDFOnly: true,
+      },
     },
   },
   plugins: [
+    'gatsby-plugin-eslint',
+    'gatsby-plugin-mdx',
+    // 'gatsby-plugin-offline',
+    'gatsby-plugin-react-helmet',
+    'gatsby-plugin-sharp',
+    'gatsby-plugin-styled-components',
+    'gatsby-transformer-sharp',
     {
-      resolve: `gatsby-source-filesystem`,
+      resolve: 'gatsby-source-filesystem',
+      options: {
+        name: 'pages',
+        path: `${__dirname}/src/pages/`,
+      },
+    },
+    {
+      resolve: 'gatsby-source-filesystem',
       options: {
         path: `${__dirname}/content/blog`,
-        name: `blog`,
+        name: 'blog',
       },
     },
     {
-      resolve: `gatsby-source-filesystem`,
+      resolve: 'gatsby-source-filesystem',
       options: {
         path: `${__dirname}/content/assets`,
-        name: `assets`,
+        name: 'assets',
       },
     },
     {
-      resolve: `gatsby-source-filesystem`,
-      options: {
-        path: `${__dirname}/content/pages`,
-        name: `pages`,
-      },
-    },
-    {
-      resolve: `gatsby-transformer-remark`,
+      resolve: 'gatsby-transformer-remark',
       options: {
         plugins: [
           {
-            resolve: `gatsby-remark-images`,
+            resolve: 'gatsby-remark-images',
             options: {
               maxWidth: 590,
             },
           },
           {
-            resolve: `gatsby-remark-responsive-iframe`,
+            resolve: 'gatsby-remark-responsive-iframe',
             options: {
-              wrapperStyle: `margin-bottom: 1.0725rem`,
+              wrapperStyle: 'margin-bottom: 1.0725rem',
             },
           },
-          `gatsby-remark-prismjs`,
-          `gatsby-remark-copy-linked-files`,
-          `gatsby-remark-smartypants`,
+          'gatsby-remark-prismjs',
+          'gatsby-remark-copy-linked-files',
+          'gatsby-remark-smartypants',
         ],
       },
     },
-    `gatsby-transformer-sharp`,
-    `gatsby-plugin-sharp`,
-    `gatsby-plugin-styled-components`,
     {
-      resolve: `gatsby-plugin-google-analytics`,
+      resolve: 'gatsby-plugin-google-analytics',
       options: {
-        //trackingId: `ADD YOUR TRACKING ID HERE`,
+        // trackingId: `TODO: ADD YOUR TRACKING ID HERE`,
       },
     },
     {
-      resolve: `gatsby-plugin-manifest`,
+      resolve: 'gatsby-plugin-prefetch-google-fonts',
       options: {
-        name: `AIDUNLOP`,
-        short_name: `AIDUNLOP`,
-        start_url: `/`,
-        background_color: `#ffffff`,
-        theme_color: `#663399`,
-        display: `minimal-ui`,
-        icon: `content/assets/gatsby-icon.png`,
-      },
-    },
-    `gatsby-plugin-offline`,
-    `gatsby-plugin-react-helmet`,
-    {
-      resolve: `gatsby-plugin-typography`,
-      options: {
-        pathToConfigModule: `src/utils/typography`,
+        fonts: [
+          {
+            family: 'Bungee',
+            variants: ['400', '700'],
+          },
+        ],
       },
     },
     {
-      resolve: `gatsby-styled-components-dark-mode`,
+      resolve: 'gatsby-plugin-manifest',
+      options: {
+        name: 'aidan dunlop',
+        short_name: 'aidandunlop',
+        start_url: '/',
+        background_color: '#ffffff',
+        theme_color: '#663399',
+        display: 'minimal-ui',
+        icon: 'content/assets/gatsby-icon.png',
+      },
+    },
+    {
+      resolve: 'gatsby-plugin-typography',
+      options: {
+        pathToConfigModule: 'src/utils/typography',
+        omitGoogleFont: true,
+      },
+    },
+    {
+      resolve: 'gatsby-styled-components-dark-mode',
       options: {
         light: require(`${__dirname}/src/utils/theme.js`).lightTheme,
         dark: require(`${__dirname}/src/utils/theme.js`).darkTheme,
       },
     },
     {
-      resolve: "gatsby-plugin-layout",
+      resolve: 'gatsby-plugin-layout',
       options: {
-        component: require.resolve("./src/components/layout.js"),
+        component: require.resolve('./src/components/layout.js'),
       },
     },
   ],
-}
+};

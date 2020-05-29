@@ -1,26 +1,29 @@
-import React from "react"
-import { Link } from "gatsby"
-import Header from "./header"
-import { rhythm, scale } from "../utils/typography"
-import { GlobalStyle } from "../utils/theme"
-import { withTheme } from "styled-components"
+import React from 'react';
+import styled, { withTheme } from 'styled-components';
+import Header from './header';
+import { rhythm } from '../utils/typography';
+import { GlobalStyle } from '../utils/theme';
 
-const Layout = withTheme(props => {
-  const { theme, children } = props
+const GlobalWrapper = styled.div`
+  margin-left: auto;
+  margin-right: auto;
+  max-width: ${rhythm(41)};
+  padding: ${rhythm(1.5)} ${rhythm(3 / 4)};
+  
+  @media print {
+    padding: ${rhythm(0.7)} ${rhythm(0.3)};
+  }
+`;
+
+const Layout = withTheme((props) => {
+  const { theme, children } = props;
   return (
-    <div
-      style={{
-        marginLeft: `auto`,
-        marginRight: `auto`,
-        maxWidth: rhythm(26),
-        padding: `${rhythm(1.5)} ${rhythm(3 / 4)}`,
-      }}
-    >
+    <GlobalWrapper>
       <GlobalStyle theme={theme} />
       <Header />
       <main>{children}</main>
-    </div>
-  )
-})
+    </GlobalWrapper>
+  );
+});
 
-export default Layout
+export default Layout;
