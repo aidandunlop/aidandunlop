@@ -34,18 +34,17 @@ const Title = ({ charactersToColour }) => {
       query TitleQuery {
         site {
           siteMetadata {
-            siteUrl
             title
           }
         }
       }
     `);
-  const { siteUrl, title } = data.site.siteMetadata;
+  const { title } = data.site.siteMetadata;
   const firstPart = title.substring(0, charactersToColour);
   const secondPart = title.substring(charactersToColour);
 
   return (
-    <StyledLink to={siteUrl}>
+    <StyledLink to="/">
       <StyledTitle>
         <span>{firstPart}</span>
         {secondPart}
