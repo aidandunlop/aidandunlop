@@ -38,7 +38,7 @@ async function createPDF(outputFile, port = 9000) {
 }
 
 function makeCV(port) {
-  createPDF('public/cv.pdf', port);
+  createPDF('public/aidan_dunlop_cv.pdf', port);
 }
 
 module.exports = { makeCV };
