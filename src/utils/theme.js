@@ -50,9 +50,6 @@ const GlobalStyle = createGlobalStyle`
       -webkit-print-color-adjust: exact;
     }
   }
-  div, hr, svg {
-    transition: background-color 2s, color 2s;
-  }
   p, i, h1, h2, h3, h4, h5, h6, small, label, li, ul, section {
     color: ${(props) => props.theme.secondaryColor};
   }

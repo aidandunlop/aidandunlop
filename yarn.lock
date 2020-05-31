@@ -6280,8 +6280,9 @@ gatsby-source-filesystem@^2.1.31:
     xstate "^4.6.7"
 
 gatsby-styled-components-dark-mode@^1.0.9:
-  version "1.0.9"
-  resolved "https://registry.yarnpkg.com/gatsby-styled-components-dark-mode/-/gatsby-styled-components-dark-mode-1.0.9.tgz#af668270677a3014b4c5a0541cba372bb3dcd66c"
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/gatsby-styled-components-dark-mode/-/gatsby-styled-components-dark-mode-1.2.0.tgz#9ecf32cac474b0142b86b508228c085fd8e16467"
+  integrity sha512-0umSV8eNoOInhP9LfRbvWGlEmgXyUlUVGzZyr9spK7HT+obNeCcnXb232gQ0PW47t4RCfL5LRrL2OHWB/7+dfw==
 
 gatsby-telemetry@^1.1.30:
   version "1.1.30"
