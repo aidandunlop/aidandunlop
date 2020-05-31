@@ -1,7 +1,7 @@
 import React, { useContext, useEffect } from 'react';
 import { useStaticQuery, graphql } from 'gatsby';
 import Image from 'gatsby-image';
-import styled, { css } from 'styled-components';
+import styled, { createGlobalStyle, css } from 'styled-components';
 import { ThemeManagerContext } from 'gatsby-styled-components-dark-mode';
 
 const poleAnimation = css`
@@ -53,17 +53,34 @@ const videoAnimation = css`
 `;
 
 const VideoWrapper = styled.div`
+  position: fixed;
+  width: 100vw;
+  top: 25%;
+  left: 0;
+  z-index: 9;
   iframe {
     position: absolute;
     padding: 0;
     margin: 0;
     bottom: 0;
     left: 0;
-    width: '100%',
-    maxWidth: '600px',
-    margin: '0 auto',
+    width: 100%,
+    maxWidth: 600px,
+    margin: 0 auto,
   }
   ${videoAnimation};
+  @media only screen and (min-width: 768px) {
+    top: 0;
+  }
+`;
+
+const GlobalStyle = createGlobalStyle`
+  html {
+    transition: background-color 1s;
+  }
+  p, i, h1, h2, h3, h4, h5, h6, small, label, li, ul, section {
+    transition: color 1s;
+  }
 `;
 
 const DiscoBall = () => {
@@ -92,6 +109,7 @@ const DiscoBall = () => {
 
   return (
     <>
+      <GlobalStyle />
       <Pole />
       <Ball fixed={data.avatar.childImageSharp.fixed} alt="discoball" />
       <VideoWrapper>

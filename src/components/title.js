@@ -1,9 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { useStaticQuery, graphql, Link } from 'gatsby';
+import { useStaticQuery, graphql } from 'gatsby';
 import styled from 'styled-components';
 
 import { scale } from '../utils/typography';
+import Link from './link';
 
 const StyledTitle = styled.h1`
   ${scale(0.8)}
@@ -29,7 +30,7 @@ const StyledLink = styled(Link)`
   }
 `;
 
-const Title = ({ charactersToColour }) => {
+const Title = ({ charactersToColour, to }) => {
   const data = useStaticQuery(graphql`
       query TitleQuery {
         site {
@@ -44,7 +45,7 @@ const Title = ({ charactersToColour }) => {
   const secondPart = title.substring(charactersToColour);
 
   return (
-    <StyledLink to="/">
+    <StyledLink to={to || '/'}>
       <StyledTitle>
         <span>{firstPart}</span>
         {secondPart}
@@ -55,10 +56,12 @@ const Title = ({ charactersToColour }) => {
 
 Title.propTypes = {
   charactersToColour: PropTypes.number,
+  to: PropTypes.string,
 };
 
 Title.defaultProps = {
   charactersToColour: 5,
+  to: '',
 };
 
 export default Title;

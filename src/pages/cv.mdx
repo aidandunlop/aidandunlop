@@ -4,15 +4,15 @@ path: '/cv'
 description: "Aidan Dunlop CV"
 date: "24/05/2020"
 ---
-import { Link } from 'gatsby';
 import Header from '../components/cv/header'
 import Item from '../components/cv/item'
+import Link from '../components/link'
 import Row from '../components/cv/row'
 import Section from '../components/cv/section'
 import Subsection from '../components/cv/subsection'
 
 <Row title="CV" skipPDF>
-    <Link to='cv.pdf'>PDF version</Link>
+    <Link external to='/aidan_dunlop_cv.pdf'>PDF version</Link>
 </Row>
 
 <Header/>

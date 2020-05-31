@@ -44,7 +44,6 @@ const GlobalStyle = createGlobalStyle`
     height: 100%;
     background-color: ${(props) => props.theme.mainColor};
     color: ${(props) => props.theme.secondaryColor};
-    transition: background-color 2s, color 2s;
     
     @media print {
       font-size: 11px;
@@ -55,7 +54,6 @@ const GlobalStyle = createGlobalStyle`
     transition: background-color 2s, color 2s;
   }
   p, i, h1, h2, h3, h4, h5, h6, small, label, li, ul, section {
-    transition: color 2s;
     color: ${(props) => props.theme.secondaryColor};
   }
   p, h1, h2, h3, h4, hr {
@@ -63,6 +61,9 @@ const GlobalStyle = createGlobalStyle`
   }
   a {
     color: ${(props) => props.theme.linkColor};
+    p {
+      color: ${(props) => props.theme.linkColor};
+    }
     @media print {
       color: ${(props) => props.theme.secondaryColor};
     }
