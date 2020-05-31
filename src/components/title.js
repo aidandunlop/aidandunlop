@@ -21,13 +21,6 @@ const StyledLink = styled(Link)`
   :hover {
     text-decoration: none;
   }
-  .gatsby-image-wrapper {
-    transition: transform 3s;
-    transition-timing: ease-in-out;
-  }
-  :hover .gatsby-image-wrapper {
-    transform: rotate(-45deg);
-  }
 `;
 
 const Title = ({ charactersToColour, to }) => {
