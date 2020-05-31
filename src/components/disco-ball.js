@@ -116,7 +116,6 @@ const DiscoBall = () => {
             }}
             src="https://www.youtube.com/embed/SkypZuY6ZvA?controls=0&autoplay=1&playsinline=1"
             frameBorder="0"
-            gesture="media"
             allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
             allowFullScreen
           />

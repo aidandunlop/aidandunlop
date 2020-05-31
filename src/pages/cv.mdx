@@ -4,7 +4,7 @@ path: '/cv'
 description: "Aidan Dunlop CV"
 date: "24/05/2020"
 ---
-
+import { Link } from 'gatsby';
 import Header from '../components/cv/header'
 import Item from '../components/cv/item'
 import Row from '../components/cv/row'
@@ -12,7 +12,7 @@ import Section from '../components/cv/section'
 import Subsection from '../components/cv/subsection'
 
 <Row title="CV" skipPDF>
-    [PDF version](cv.pdf)
+    <Link to='cv.pdf'>PDF version</Link>
 </Row>
 
 <Header/>
@@ -21,7 +21,7 @@ import Subsection from '../components/cv/subsection'
 
 Experienced software engineer interested in useful applications of Machine Learning, with over 5 years experience of writing software.
 
-I'm skilled in JavaScript, React, Node, HTML/CSS, Python, Pytorch, Pandas, SciKit Learn, and more.
+Skilled in JavaScript, React, Node, HTML/CSS, Python, Pytorch, Pandas, SciKit Learn, and more.
 
 ---
 

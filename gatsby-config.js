@@ -20,7 +20,7 @@ module.exports = {
   plugins: [
     'gatsby-plugin-eslint',
     'gatsby-plugin-mdx',
-    // 'gatsby-plugin-offline',
+    'gatsby-plugin-offline',
     'gatsby-plugin-react-helmet',
     'gatsby-plugin-sharp',
     'gatsby-plugin-styled-components',
