@@ -53,7 +53,7 @@
     "typography": "^0.16.19",
     "typography-theme-moraga": "^0.16.19",
     "what-input": "^5.2.9",
-    "yarn": "^1.19.1"
+    "yarn": "^1.22.0"
   },
   "homepage": "https://github.com/gatsbyjs/gatsby-starter-blog#readme",
   "keywords": [
