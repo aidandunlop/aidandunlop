@@ -31,9 +31,9 @@ const StyledAccordionItemButton = styled(AccordionItemButton)`
   display: flex;
   justify-content: space-between;
   transition: none;
-  padding: 10px 0;
+  padding: 10px 15px;
   h4 {
-    padding: 2px 5px 0px 5px;
+    padding: 5px 0;
     margin-bottom: 0;
   }
   
@@ -56,7 +56,6 @@ const PlusMinusIcon = styled.div`
   @media print {
     display: none;
   }
-  margin-right: 15px;
   position: relative;
   width: 20px;
   height: 20px;
