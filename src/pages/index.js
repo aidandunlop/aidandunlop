@@ -7,8 +7,7 @@ import SEO from '../components/seo';
 import { rhythm } from '../utils/typography';
 
 const Home = ({ data }) => {
-  // const siteTitle = data.site.siteMetadata.title;
-  const posts = data.allMarkdownRemark.edges;
+  const posts = data.allMdx.edges;
   // TODO: make this MDX
   return (
     <>
@@ -61,7 +60,7 @@ Home.propTypes = {
         title: PropTypes.string,
       },
     },
-    allMarkdownRemark: PropTypes.object, // TODO: Make proper proptypes
+    allMdx: PropTypes.object, // TODO: Make proper proptypes
   }).isRequired,
 };
 
@@ -74,7 +73,7 @@ export const pageQuery = graphql`
         title
       }
     }
-    allMarkdownRemark(
+    allMdx(
       filter: { fileAbsolutePath: {regex : "\/blog/"} },
       sort: { fields: [frontmatter___date], order: DESC }
     ) {
@@ -85,7 +84,7 @@ export const pageQuery = graphql`
             slug
           }
           frontmatter {
-            date(formatString: "MMMM DD, YYYY")
+            date(formatString: "MMMM Do, YYYY")
             title
             description
           }

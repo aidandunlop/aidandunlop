@@ -13,6 +13,9 @@ const Wrapper = styled.div`
   padding-left: 10px;
   border-left: 2px solid ${(props) => props.theme.linkColor};
   margin-left: 6px;
+  @media print {
+    border: none;
+  }
   `;
 
 const StyledAccordionItemHeading = styled(AccordionItemHeading)`

@@ -1,50 +1,34 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Link, graphql } from 'gatsby';
+import { graphql, Link } from 'gatsby';
+import { MDXRenderer } from 'gatsby-plugin-mdx';
 
 import Bio from '../components/bio';
 import SEO from '../components/seo';
-import { rhythm, scale } from '../utils/typography';
 
 const BlogPostTemplate = ({ data, pageContext }) => {
-  const post = data.markdownRemark;
+  const { mdx: post } = data;
   const { previous, next } = pageContext;
+  const { title, description, date } = post.frontmatter;
 
   return (
     <>
       <SEO
-        title={post.frontmatter.title}
-        description={post.frontmatter.description || post.excerpt}
+        title={title}
+        description={description || post.excerpt}
       />
       <article>
         <header>
-          <h1
-            style={{
-              marginTop: rhythm(1),
-              marginBottom: 0,
-            }}
-          >
-            {post.frontmatter.title}
+          <hr />
+          <h1>
+            {title}
           </h1>
-          <p
-            style={{
-              ...scale(-1 / 5),
-              display: 'block',
-              marginBottom: rhythm(1),
-            }}
-          >
-            {post.frontmatter.date}
+          <p>
+            {date}
           </p>
         </header>
-        <section dangerouslySetInnerHTML={{ __html: post.html }} />
-        <hr
-          style={{
-            marginBottom: rhythm(1),
-          }}
-        />
-        <footer>
-          <Bio />
-        </footer>
+        <MDXRenderer>{post.body}</MDXRenderer>
+        <hr />
       </article>
 
       <nav>
@@ -55,6 +39,7 @@ const BlogPostTemplate = ({ data, pageContext }) => {
             justifyContent: 'space-between',
             listStyle: 'none',
             padding: 0,
+            margin: 0,
           }}
         >
           <li>
@@ -77,6 +62,10 @@ const BlogPostTemplate = ({ data, pageContext }) => {
           </li>
         </ul>
       </nav>
+      <hr />
+      <footer>
+        <Bio />
+      </footer>
     </>
   );
 };
@@ -88,8 +77,8 @@ BlogPostTemplate.propTypes = {
         title: PropTypes.string,
       },
     },
-    markdownRemark: PropTypes.object, // TODO: Make proper proptypes
-    allMarkdownRemark: PropTypes.object, // TODO: Make proper proptypes
+    mdx: PropTypes.object, // TODO: Make proper proptypes
+    allMdx: PropTypes.object, // TODO: Make proper proptypes
   }).isRequired,
   pageContext: PropTypes.shape({
     next: PropTypes.object,
@@ -107,15 +96,15 @@ export const pageQuery = graphql`
         author
       }
     }
-    markdownRemark(fields: { slug: { eq: $slug } }) {
+    mdx(fields: { slug: { eq: $slug } }) {
       id
       excerpt(pruneLength: 160)
-      html
+      body
       frontmatter {
         title
-        date(formatString: "MMMM DD, YYYY")
+        date(formatString: "MMMM Do, YYYY")
         description
       }
     }
   }
-`;
+  `;

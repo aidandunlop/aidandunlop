@@ -29,7 +29,7 @@ async function createPDF(outputFile, port = 9000) {
       });
       const page = await browser.newPage();
       await page.goto(host, { waitUntil: 'networkidle2' });
-      await page.pdf({ path: outputFile, format: 'A4', pageRanges: '1' });
+      await page.pdf({ path: outputFile, format: 'A4' });
       await browser.close();
       console.log('Created PDF.');
       kill([server.pid]);
