@@ -46,7 +46,7 @@ const GlobalStyle = createGlobalStyle`
     color: ${(props) => props.theme.secondaryColor};
     
     @media print {
-      font-size: 11px;
+      font-size: 12px;
       -webkit-print-color-adjust: exact;
     }
   }
@@ -85,6 +85,9 @@ const GlobalStyle = createGlobalStyle`
   hr {
     background-color: ${(props) => props.theme.secondaryColor};
     opacity: 0.5;
+    @media print {
+      display: none;
+    }
   }
 }`;
 

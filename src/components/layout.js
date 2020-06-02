@@ -5,9 +5,7 @@ import { ThemeManagerContext } from 'gatsby-styled-components-dark-mode';
 import Header from './header';
 import { rhythm } from '../utils/typography';
 import { GlobalStyle } from '../utils/theme';
-// rh0.7 = 1.092
-// rh1 = 1.56
-// rh1.03 = 1.51
+
 const GlobalWrapper = styled.div`
   margin-left: auto;
   margin-right: auto;
@@ -15,7 +13,7 @@ const GlobalWrapper = styled.div`
   padding: ${rhythm(1.5)} ${rhythm(3 / 4)};
   
   @media print {
-    padding: ${rhythm(0.7)} ${rhythm(0.97)};
+    padding: ${rhythm(0.7)} ${rhythm(1.4)};
     max-width: ${rhythm(50)};
   }
 `;
