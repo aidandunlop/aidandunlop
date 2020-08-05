@@ -21,6 +21,9 @@ const Wrapper = styled.div`
 const StyledAccordionItemHeading = styled(AccordionItemHeading)`
   margin-bottom: 5px;
   transition: background-color 2s;
+  @media print {
+    margin-bottom: 0px;
+  }
 `;
 
 const StyledAccordionItemButton = styled(AccordionItemButton)`
