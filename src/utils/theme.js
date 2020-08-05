@@ -55,9 +55,6 @@ const GlobalStyle = createGlobalStyle`
   }
   p, h1, h2, h3, h4, hr {
     margin-bottom: 0.5rem;
-    @media print {
-      margin-bottom: 0.25rem;
-    }
   }
   a {
     color: ${(props) => props.theme.linkColor};
