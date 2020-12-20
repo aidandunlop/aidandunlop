@@ -47,7 +47,7 @@ const Bio = () => {
         Hello! I&apos;m
         {' '}
         <strong>{author}</strong>
-        , a software engineer with a keen
+        , a Machine Learning Engineer with a keen
         interest in Artificial Intelligence, Computer Vision, and Machine
         Learning.
       </p>
