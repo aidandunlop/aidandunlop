@@ -34,6 +34,7 @@ const StyledAccordionItemButton = styled(AccordionItemButton)`
   align-items: center;
   background-color: ${(props) => props.theme.shadowColor};
   border-radius: 5px;
+  cursor: pointer;
   display: flex;
   justify-content: space-between;
   transition: none;

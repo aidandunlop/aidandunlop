@@ -27,8 +27,9 @@ const SectionWrapper = styled.div`
 const Section = ({
   children, noHR, preExpanded, isSingle, skipPDF, title, useAccordion,
 }) => {
+  const expandedArray = preExpanded.split(',');
   const wrappedChildren = useAccordion ? (
-    <Accordion allowMultipleExpanded allowZeroExpanded preExpanded={[preExpanded]}>
+    <Accordion allowMultipleExpanded allowZeroExpanded preExpanded={expandedArray}>
       {children}
     </Accordion>
   ) : <>{children}</>;
