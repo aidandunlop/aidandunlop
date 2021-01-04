@@ -20,6 +20,7 @@ module.exports = {
   plugins: [
     'gatsby-plugin-eslint',
     'gatsby-plugin-offline',
+    'gatsby-plugin-preload-fonts',
     'gatsby-plugin-react-helmet',
     'gatsby-plugin-sharp',
     'gatsby-plugin-styled-components',
@@ -78,17 +79,6 @@ module.exports = {
       },
     },
     {
-      resolve: 'gatsby-plugin-prefetch-google-fonts',
-      options: {
-        fonts: [
-          {
-            family: 'Bungee',
-            variants: ['400', '700'],
-          },
-        ],
-      },
-    },
-    {
       resolve: 'gatsby-plugin-manifest',
       options: {
         name: 'aidan dunlop',
@@ -104,7 +94,6 @@ module.exports = {
       resolve: 'gatsby-plugin-typography',
       options: {
         pathToConfigModule: 'src/utils/typography',
-        omitGoogleFont: true,
       },
     },
     {
