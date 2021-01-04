@@ -3,6 +3,11 @@ import Moraga from 'typography-theme-moraga';
 
 Moraga.headerFontFamily = ['Bungee'];
 
+// Moraga.googleFonts = [{
+//   name: 'Bungee',
+//   styles: ['400'],
+// }];
+
 const typography = new Typography(Moraga);
 
 // Hot reload typography in development.

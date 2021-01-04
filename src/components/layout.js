@@ -6,6 +6,8 @@ import Header from './header';
 import { rhythm } from '../utils/typography';
 import { GlobalStyle } from '../utils/theme';
 
+import 'fontsource-bungee';
+
 const GlobalWrapper = styled.div`
   margin-left: auto;
   margin-right: auto;
