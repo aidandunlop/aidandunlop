@@ -46,7 +46,7 @@ const GlobalStyle = createGlobalStyle`
     color: ${(props) => props.theme.secondaryColor};
     
     @media print {
-      font-size: 12px;
+      font-size: 13px;
       -webkit-print-color-adjust: exact;
     }
   }
