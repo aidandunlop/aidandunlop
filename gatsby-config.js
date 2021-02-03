@@ -3,9 +3,9 @@
 const site = 'https://aidandunlop.com/';
 module.exports = {
   siteMetadata: {
-    title: 'aidandunlop',
+    title: 'Aidan Dunlop',
     author: 'Aidan Dunlop',
-    description: 'Personal site for Aidan Dunlop, Software Engineer.',
+    description: 'Personal site for Aidan Dunlop, Machine Learning Engineer.',
     siteUrl: site,
     social: {
       twitter: 'aidunlop',
