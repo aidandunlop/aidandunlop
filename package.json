@@ -33,7 +33,7 @@
     "gatsby-remark-smartypants": "^2.1.12",
     "gatsby-source-filesystem": "^2.1.31",
     "gatsby-styled-components-dark-mode": "^1.2.0",
-    "gatsby-transformer-remark": "^2.8.14",
+    "gatsby-transformer-remark": "^5.25.1",
     "gatsby-transformer-sharp": "^2.2.21",
     "markdown-pdf": "^10.0.0",
     "prismjs": "^1.17.1",
