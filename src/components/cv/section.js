@@ -28,12 +28,11 @@ function Section({
   children, noHR, preExpanded, isSingle, skipPDF, title, useAccordion,
 }) {
   const expandedArray = preExpanded.split(',');
-  console.log('asdfa', children);
   const wrappedChildren = useAccordion ? (
     <Accordion allowMultipleExpanded allowZeroExpanded preExpanded={expandedArray}>
       {children}
     </Accordion>
-  ) : 'asd';
+  ) : <div>{children}</div>;
   return (
     <SectionWrapper skipPDF={skipPDF} isSingle={isSingle}>
       {title && <StyledTitle>{title}</StyledTitle>}
