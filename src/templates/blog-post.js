@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { graphql, Link } from 'gatsby';
-import { MDXRenderer } from 'gatsby-plugin-mdx';
+// import { MDXRenderer } from 'gatsby-plugin-mdx';
 
 import Bio from '../components/bio';
 import SEO from '../components/seo';
@@ -10,7 +10,6 @@ function BlogPostTemplate({ data, pageContext }) {
   const { mdx: post } = data;
   const { previous, next } = pageContext;
   const { title, description, date } = post.frontmatter;
-
   return (
     <>
       <SEO
@@ -27,7 +26,7 @@ function BlogPostTemplate({ data, pageContext }) {
             {date}
           </p>
         </header>
-        <MDXRenderer>{post.body}</MDXRenderer>
+        {/* <MDXRenderer>{post.body}</MDXRenderer> */}
         <hr />
       </article>
 
