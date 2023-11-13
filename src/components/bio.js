@@ -24,7 +24,7 @@ const StopDiscoBanner = styled.div`
   align-items: center;
 `;
 
-const Bio = () => {
+function Bio() {
   const data = useStaticQuery(graphql`
     query BioQuery {
       site {
@@ -74,6 +74,6 @@ const Bio = () => {
       )}
     </>
   );
-};
+}
 
 export default Bio;

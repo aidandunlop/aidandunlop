@@ -23,7 +23,7 @@ const StyledLink = styled(Link)`
   }
 `;
 
-const Title = ({ charactersToColour, to }) => {
+function Title({ charactersToColour, to }) {
   const data = useStaticQuery(graphql`
       query TitleQuery {
         site {
@@ -45,7 +45,7 @@ const Title = ({ charactersToColour, to }) => {
       </StyledTitle>
     </StyledLink>
   );
-};
+}
 
 Title.propTypes = {
   charactersToColour: PropTypes.number,

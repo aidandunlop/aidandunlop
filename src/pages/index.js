@@ -6,7 +6,7 @@ import Bio from '../components/bio';
 import SEO from '../components/seo';
 import { rhythm } from '../utils/typography';
 
-const Home = ({ data }) => {
+function Home({ data }) {
   const posts = data.allMdx.edges;
   // TODO: make this MDX
   return (
@@ -51,7 +51,7 @@ const Home = ({ data }) => {
       })}
     </>
   );
-};
+}
 
 Home.propTypes = {
   data: PropTypes.shape({
@@ -60,7 +60,7 @@ Home.propTypes = {
         title: PropTypes.string,
       },
     },
-    allMdx: PropTypes.object, // TODO: Make proper proptypes
+    allMdx: PropTypes.shape(), // TODO: Make proper proptypes
   }).isRequired,
 };
 
@@ -73,10 +73,7 @@ export const pageQuery = graphql`
         title
       }
     }
-    allMdx(
-      filter: { fileAbsolutePath: {regex : "\/blog/"} },
-      sort: { fields: [frontmatter___date], order: DESC }
-    ) {
+    allMdx(sort: {frontmatter: {date: DESC}}, filter: {internal: {contentFilePath: {regex: "/blog/"}}}, ) {
       edges {
         node {
           excerpt

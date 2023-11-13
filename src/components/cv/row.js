@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
-
 const RowWrapper = styled.div`
   @media print {
     display: ${(props) => (props.skipPDF ? 'none' : 'block')};
@@ -12,14 +11,16 @@ const RowWrapper = styled.div`
   align-items: flex-end;
 `;
 
-const Section = ({
+function Section({
   children, skipPDF, title,
-}) => (
-  <RowWrapper skipPDF={skipPDF}>
-    <h1>{title}</h1>
-    {children}
-  </RowWrapper>
-);
+}) {
+  return (
+    <RowWrapper skipPDF={skipPDF}>
+      <h1>{title}</h1>
+      {children}
+    </RowWrapper>
+  );
+}
 
 Section.propTypes = {
   children: PropTypes.node.isRequired,

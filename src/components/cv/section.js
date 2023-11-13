@@ -24,15 +24,16 @@ const SectionWrapper = styled.div`
   }
 `;
 
-const Section = ({
+function Section({
   children, noHR, preExpanded, isSingle, skipPDF, title, useAccordion,
-}) => {
+}) {
   const expandedArray = preExpanded.split(',');
+  console.log('asdfa', children);
   const wrappedChildren = useAccordion ? (
     <Accordion allowMultipleExpanded allowZeroExpanded preExpanded={expandedArray}>
       {children}
     </Accordion>
-  ) : <>{children}</>;
+  ) : 'asd';
   return (
     <SectionWrapper skipPDF={skipPDF} isSingle={isSingle}>
       {title && <StyledTitle>{title}</StyledTitle>}
@@ -40,7 +41,7 @@ const Section = ({
       {!noHR && <hr />}
     </SectionWrapper>
   );
-};
+}
 
 Section.propTypes = {
   children: PropTypes.node.isRequired,

@@ -22,7 +22,6 @@ const Wrapper = styled.div`
   }
 `;
 
-
 const StyledContact = styled.div`
   @media screen {
     display: ${(props) => (props.hideOnWeb ? 'none' : 'flex')};
@@ -40,7 +39,7 @@ const StyledContact = styled.div`
   }
 `;
 
-const Contact = ({ theme }) => {
+function Contact({ theme }) {
   const data = useStaticQuery(graphql`
     query CVContactQuery {
       site {
@@ -88,7 +87,7 @@ const Contact = ({ theme }) => {
       }))}
     </Wrapper>
   );
-};
+}
 
 Contact.propTypes = {
   ...themePropTypes,

@@ -75,7 +75,8 @@
     "serve_with_cv": "yarn build_with_cv && yarn serve -H 0.0.0.0",
     "start": "npm run develop",
     "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing \"",
-    "preload-fonts": "gatsby-preload-fonts"
+    "preload-fonts": "gatsby-preload-fonts",
+    "lint": "eslint --fix --ext .js,.jsx ."
   },
   "devDependencies": {
     "eslint-config-airbnb": "^19.0.4",

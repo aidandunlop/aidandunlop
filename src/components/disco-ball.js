@@ -1,8 +1,7 @@
 import React, { useContext, useEffect } from 'react';
 import { useStaticQuery, graphql } from 'gatsby';
 import Image from 'gatsby-image';
-import styled, { createGlobalStyle, css } from 'styled-components';
-import { ThemeManagerContext } from 'gatsby-styled-components-dark-mode';
+import styled, { createGlobalStyle, css, ThemeContext } from 'styled-components';
 
 const poleAnimation = css`
   transform: translate(-50%, -50%);
@@ -83,7 +82,7 @@ const GlobalStyle = createGlobalStyle`
   }
 `;
 
-const DiscoBall = () => {
+function DiscoBall() {
   const data = useStaticQuery(graphql`
     query DiscoBallQuery {
       avatar: file(absolutePath: { regex: "/disco-ball.png/" }) {
@@ -96,7 +95,7 @@ const DiscoBall = () => {
     }
   `);
 
-  const themeContext = useContext(ThemeManagerContext);
+  const themeContext = useContext(ThemeContext);
 
   useEffect(() => {
     const flashTheme = setInterval(() => {
@@ -141,6 +140,6 @@ const DiscoBall = () => {
       </VideoWrapper>
     </>
   );
-};
+}
 
 export default DiscoBall;

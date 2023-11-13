@@ -14,7 +14,7 @@ const StyledHeader = styled.div`
   }
 `;
 
-const Header = () => {
+function Header() {
   const data = useStaticQuery(graphql`
   query CVHeaderQuery {
     site {
@@ -33,6 +33,6 @@ const Header = () => {
       <Contact />
     </StyledHeader>
   );
-};
+}
 
 export default Header;

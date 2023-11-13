@@ -6,7 +6,7 @@ import { MDXRenderer } from 'gatsby-plugin-mdx';
 import Bio from '../components/bio';
 import SEO from '../components/seo';
 
-const BlogPostTemplate = ({ data, pageContext }) => {
+function BlogPostTemplate({ data, pageContext }) {
   const { mdx: post } = data;
   const { previous, next } = pageContext;
   const { title, description, date } = post.frontmatter;
@@ -44,20 +44,20 @@ const BlogPostTemplate = ({ data, pageContext }) => {
         >
           <li>
             {previous && (
-            <Link to={previous.fields.slug} rel="prev">
-              ←
-              {' '}
-              {previous.frontmatter.title}
-            </Link>
+              <Link to={previous.fields.slug} rel="prev">
+                ←
+                {' '}
+                {previous.frontmatter.title}
+              </Link>
             )}
           </li>
           <li>
             {next && (
-            <Link to={next.fields.slug} rel="next">
-              {next.frontmatter.title}
-              {' '}
-              →
-            </Link>
+              <Link to={next.fields.slug} rel="next">
+                {next.frontmatter.title}
+                {' '}
+                →
+              </Link>
             )}
           </li>
         </ul>
@@ -68,7 +68,7 @@ const BlogPostTemplate = ({ data, pageContext }) => {
       </footer>
     </>
   );
-};
+}
 
 BlogPostTemplate.propTypes = {
   data: PropTypes.shape({
@@ -77,12 +77,12 @@ BlogPostTemplate.propTypes = {
         title: PropTypes.string,
       },
     },
-    mdx: PropTypes.object, // TODO: Make proper proptypes
-    allMdx: PropTypes.object, // TODO: Make proper proptypes
+    mdx: PropTypes.shape(), // TODO: Make proper proptypes
+    allMdx: PropTypes.shape(), // TODO: Make proper proptypes
   }).isRequired,
   pageContext: PropTypes.shape({
-    next: PropTypes.object,
-    previous: PropTypes.object,
+    next: PropTypes.shape(),
+    previous: PropTypes.shape(),
   }).isRequired,
 };
 

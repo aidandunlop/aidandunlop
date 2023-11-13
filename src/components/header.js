@@ -1,7 +1,6 @@
 import React, { useContext } from 'react';
-import styled from 'styled-components';
+import styled, { ThemeContext } from 'styled-components';
 import Tooltip from 'rc-tooltip';
-import { ThemeManagerContext } from 'gatsby-styled-components-dark-mode';
 
 import { scale } from '../utils/typography';
 import Title from './title';
@@ -55,8 +54,8 @@ const renderEmoji = (themeContext) => {
   return <Emoji label={label} symbol={symbol} />;
 };
 
-const DarkModeToggle = () => {
-  const themeContext = useContext(ThemeManagerContext);
+function DarkModeToggle() {
+  const themeContext = useContext(ThemeContext);
   return (
     <Tooltip
       placement="bottom"
@@ -75,15 +74,15 @@ const DarkModeToggle = () => {
       </StyledEmoji>
     </Tooltip>
   );
-};
+}
 
-const Header = () => (
-  <>
+function Header() {
+  return (
     <StyledHeader>
       <Title />
       <DarkModeToggle />
     </StyledHeader>
-  </>
-);
+  );
+}
 
 export default Header;

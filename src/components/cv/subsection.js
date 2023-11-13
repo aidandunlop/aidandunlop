@@ -102,25 +102,27 @@ const PlusMinusIcon = styled.div`
   `}
 `;
 
-const Subsection = ({ children, title }) => (
-  <AccordionItem uuid={title}>
-    <StyledAccordionItemHeading aria-level={4}>
-      <StyledAccordionItemButton>
-        <h4>
-          {title}
-        </h4>
-        <AccordionItemState>
-          {({ expanded }) => <PlusMinusIcon expanded={expanded} />}
-        </AccordionItemState>
-      </StyledAccordionItemButton>
-    </StyledAccordionItemHeading>
-    <StyledAccordionPanel>
-      <Wrapper>
-        <section>{children}</section>
-      </Wrapper>
-    </StyledAccordionPanel>
-  </AccordionItem>
-);
+function Subsection({ children, title }) {
+  return (
+    <AccordionItem uuid={title}>
+      <StyledAccordionItemHeading aria-level={4}>
+        <StyledAccordionItemButton>
+          <h4>
+            {title}
+          </h4>
+          <AccordionItemState>
+            {({ expanded }) => <PlusMinusIcon expanded={expanded} />}
+          </AccordionItemState>
+        </StyledAccordionItemButton>
+      </StyledAccordionItemHeading>
+      <StyledAccordionPanel>
+        <Wrapper>
+          <section>{children}</section>
+        </Wrapper>
+      </StyledAccordionPanel>
+    </AccordionItem>
+  );
+}
 
 Subsection.propTypes = {
   children: PropTypes.node.isRequired,
