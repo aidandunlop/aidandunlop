@@ -27,7 +27,6 @@ const darkTheme = {
 
 const themePropTypes = {
   theme: PropTypes.shape({
-    isDark: PropTypes.bool.isRequired,
     linkColor: PropTypes.string.isRequired,
     linkHoverColor: PropTypes.string.isRequired,
     mainColor: PropTypes.string.isRequired,

@@ -15,7 +15,7 @@ function Section({
   children, skipPDF, title,
 }) {
   return (
-    <RowWrapper skipPDF={skipPDF}>
+    <RowWrapper $skipPDF={skipPDF}>
       <h1>{title}</h1>
       {children}
     </RowWrapper>

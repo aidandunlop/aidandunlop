@@ -8,7 +8,6 @@ import {
   AccordionItemPanel,
   AccordionItemState,
 } from 'react-accessible-accordion';
-import { v4 as uuidv4 } from 'uuid';
 
 const Wrapper = styled.div`
   padding-left: 10px;
@@ -103,16 +102,16 @@ const PlusMinusIcon = styled.div`
   `}
 `;
 
-function Subsection({ children, title }) {
+function Subsection({ children, title, id }) {
   return (
-    <AccordionItem uuid={uuidv4()}>
+    <AccordionItem uuid={id}>
       <StyledAccordionItemHeading aria-level={4}>
         <StyledAccordionItemButton>
           <h4>
             {title}
           </h4>
           <AccordionItemState>
-            {({ expanded }) => <PlusMinusIcon expanded={expanded} />}
+            {({ expanded }) => <PlusMinusIcon $expanded={expanded} />}
           </AccordionItemState>
         </StyledAccordionItemButton>
       </StyledAccordionItemHeading>
@@ -128,6 +127,7 @@ function Subsection({ children, title }) {
 Subsection.propTypes = {
   children: PropTypes.node.isRequired,
   title: PropTypes.string.isRequired,
+  id: PropTypes.string.isRequired,
 };
 
 export default Subsection;

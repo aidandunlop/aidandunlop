@@ -34,7 +34,7 @@ function Section({
     </Accordion>
   ) : <div>{children}</div>;
   return (
-    <SectionWrapper skipPDF={skipPDF} isSingle={isSingle}>
+    <SectionWrapper $skipPDF={skipPDF} $isSingle={isSingle}>
       {title && <StyledTitle>{title}</StyledTitle>}
       {wrappedChildren}
       {!noHR && <hr />}
