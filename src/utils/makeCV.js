@@ -4,7 +4,7 @@ const { exec } = require('child_process');
 const kill = require('tree-kill');
 
 const portConfigMap = {
-  9000: { command: 'yarn serve', serverStartedString: 'gatsby serve running at:' },
+  9000: { command: 'yarn serve', serverStartedString: 'You can now view aidandunlop in the browser' },
   8000: { command: 'yarn dev', serverStartedString: 'Compiled successfully' },
 };
 
@@ -24,10 +24,11 @@ async function createPDF(outputFile, port = 9000) {
       const host = `http://localhost:${port}/cv`;
       console.log('Creating PDF from...', host);
       const browser = await puppeteer.launch({
-        headless: true,
+        headless: false,
         args: ['--no-sandbox', '--disable-setuid-sandbox', '--font-render-hinting=none'],
       });
       const page = await browser.newPage();
+      await page.emulateMediaFeatures([{ name: 'prefers-color-scheme', value: 'light' }]);
       await page.goto(host, { waitUntil: 'networkidle2' });
       await page.pdf({ path: outputFile, format: 'A4' });
       await browser.close();

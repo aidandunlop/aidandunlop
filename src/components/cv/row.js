@@ -14,6 +14,7 @@ const RowWrapper = styled.div`
 function Section({
   children, skipPDF, title,
 }) {
+  console.log(skipPDF);
   return (
     <RowWrapper $skipPDF={skipPDF}>
       <h1>{title}</h1>

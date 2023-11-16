@@ -66,9 +66,9 @@ const PlusMinusIcon = styled.div`
   position: relative;
   width: 20px;
   height: 20px;
-  
+
   :before,
-  :after{
+  :after {
     border-radius: 10px;
     content: "";
     position: absolute;
@@ -93,11 +93,11 @@ const PlusMinusIcon = styled.div`
       height: 4px;
       margin-top: -2px;
   }
-  
+
   ${({ expanded }) => expanded && `
     cursor: pointer;
-    :before { 
-      transform: rotate(90deg); 
+    :before {
+      transform: rotate(90deg);
     }
   `}
 `;
@@ -111,7 +111,7 @@ function Subsection({ children, title, id }) {
             {title}
           </h4>
           <AccordionItemState>
-            {({ expanded }) => <PlusMinusIcon $expanded={expanded} />}
+            {({ expanded }) => <PlusMinusIcon expanded={expanded} />}
           </AccordionItemState>
         </StyledAccordionItemButton>
       </StyledAccordionItemHeading>

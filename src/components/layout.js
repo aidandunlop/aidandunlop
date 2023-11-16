@@ -1,5 +1,7 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import styled, { withTheme } from 'styled-components';
+import { useStyledDarkMode, ThemeSetting } from 'gatsby-styled-components-dark-mode';
+
 import Header from './header';
 import { rhythm } from '../utils/typography';
 import { GlobalStyle } from '../utils/theme';
@@ -20,6 +22,9 @@ const GlobalWrapper = styled.div`
 
 const Layout = withTheme((props) => {
   const { theme, children } = props;
+  const { changeThemeSetting } = useStyledDarkMode();
+
+  useEffect(() => changeThemeSetting(ThemeSetting.SYSTEM));
 
   return (
     <GlobalWrapper>
