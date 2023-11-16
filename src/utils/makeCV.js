@@ -4,7 +4,7 @@ const { exec } = require('child_process');
 const kill = require('tree-kill');
 
 const portConfigMap = {
-  9000: { command: 'yarn serve', serverStartedString: 'You can now view aidandunlop in the browser' },
+  9000: { command: 'yarn serve', serverStartedString: 'http://localhost:9000/' },
   8000: { command: 'yarn dev', serverStartedString: 'Compiled successfully' },
 };
 
