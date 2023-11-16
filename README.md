@@ -2,4 +2,4 @@
 
 Personal site for @aidunlop
 
-Built with gatsby, based off [Gatsby Starter Blog MDX](https://www.gatsbyjs.org/starters/hagnerd/gatsby-starter-blog-mdx).
+Built with Gatsby, based off [Gatsby Starter Blog MDX](https://www.gatsbyjs.org/starters/hagnerd/gatsby-starter-blog-mdx).
