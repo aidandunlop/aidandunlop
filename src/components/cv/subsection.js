@@ -44,7 +44,7 @@ const StyledAccordionItemButton = styled(AccordionItemButton)`
     margin-bottom: 0;
   }
   
-  :focus {
+  &:focus {
     background-color: ${(props) => props.theme.shadowColor};
     outline-color: ${(props) => props.theme.linkColor};
   }
