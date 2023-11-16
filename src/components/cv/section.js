@@ -9,7 +9,7 @@ const StyledTitle = styled.h3`
 
 const SectionWrapper = styled.div`
   @media print {
-    display: ${(props) => (props.skipPDF ? 'none' : 'block')};
+    display: ${(props) => (props.$skipPDF ? 'none' : 'block')};
 
   }
   ul {
@@ -20,27 +20,27 @@ const SectionWrapper = styled.div`
     margin-bottom: 0.1rem;
   }
   div {
-    margin-left: ${(props) => (props.isSingle ? '10px' : '0')};
+    margin-left: ${(props) => (props.$isSingle ? '10px' : '0')};
   }
 `;
 
-const Section = ({
+function Section({
   children, noHR, preExpanded, isSingle, skipPDF, title, useAccordion,
-}) => {
+}) {
   const expandedArray = preExpanded.split(',');
   const wrappedChildren = useAccordion ? (
     <Accordion allowMultipleExpanded allowZeroExpanded preExpanded={expandedArray}>
       {children}
     </Accordion>
-  ) : <>{children}</>;
+  ) : <div>{children}</div>;
   return (
-    <SectionWrapper skipPDF={skipPDF} isSingle={isSingle}>
+    <SectionWrapper $skipPDF={skipPDF} $isSingle={isSingle}>
       {title && <StyledTitle>{title}</StyledTitle>}
       {wrappedChildren}
       {!noHR && <hr />}
     </SectionWrapper>
   );
-};
+}
 
 Section.propTypes = {
   children: PropTypes.node.isRequired,

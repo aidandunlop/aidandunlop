@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import DiscoBall from './disco-ball';
 
 const DiscoLink = styled.span`
-  :hover {
+  &:hover {
     color: ${(props) => props.theme.linkColor};
     cursor: pointer;
     text-decoration: underline;
@@ -24,7 +24,7 @@ const StopDiscoBanner = styled.div`
   align-items: center;
 `;
 
-const Bio = () => {
+function Bio() {
   const data = useStaticQuery(graphql`
     query BioQuery {
       site {
@@ -62,18 +62,18 @@ const Bio = () => {
         </a>
       </p>
       {disco
-      && (
-      <>
-        <DiscoBall />
-        <StopDiscoBanner>
-          <button type="button" onClick={() => showDisco(false)}>
-            Stop this Aidan it&apos;s annoying
-          </button>
-        </StopDiscoBanner>
-      </>
-      )}
+        && (
+          <>
+            <DiscoBall />
+            <StopDiscoBanner>
+              <button type="button" onClick={() => showDisco(false)}>
+                Stop this Aidan it&apos;s annoying
+              </button>
+            </StopDiscoBanner>
+          </>
+        )}
     </>
   );
-};
+}
 
 export default Bio;

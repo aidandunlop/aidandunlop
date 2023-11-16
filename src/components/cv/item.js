@@ -12,21 +12,23 @@ const StyledHeader = styled.div`
   }
 `;
 
-const Item = ({
+function Item({
   children, desc, title, time,
-}) => (
-  <>
-    <StyledHeader>
-      <p>
-        <strong>{title}</strong>
-        {' '}
-        {desc.length > 0 && desc}
-      </p>
-      <i style={{ textAlign: 'right' }}>{time}</i>
-    </StyledHeader>
-    <div>{children}</div>
-  </>
-);
+}) {
+  return (
+    <>
+      <StyledHeader>
+        <p>
+          <strong>{title}</strong>
+          {' '}
+          {desc.length > 0 && desc}
+        </p>
+        <i style={{ textAlign: 'right' }}>{time}</i>
+      </StyledHeader>
+      <div>{children}</div>
+    </>
+  );
+}
 
 Item.defaultProps = {
   children: '',

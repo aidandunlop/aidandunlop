@@ -22,10 +22,9 @@ const Wrapper = styled.div`
   }
 `;
 
-
 const StyledContact = styled.div`
   @media screen {
-    display: ${(props) => (props.hideOnWeb ? 'none' : 'flex')};
+    display: ${(props) => (props.$hideOnWeb ? 'none' : 'flex')};
   }
   display: flex;
   align-items: center;
@@ -40,7 +39,7 @@ const StyledContact = styled.div`
   }
 `;
 
-const Contact = ({ theme }) => {
+function Contact({ theme }) {
   const data = useStaticQuery(graphql`
     query CVContactQuery {
       site {
@@ -80,7 +79,7 @@ const Contact = ({ theme }) => {
       {contact.map(((link) => {
         const Icon = fontawesome[link.icon];
         return (
-          <StyledContact key={link.url} hideOnWeb={link.renderOnPDFOnly}>
+          <StyledContact key={link.url} $hideOnWeb={link.renderOnPDFOnly}>
             <Icon size="1.5em" color={theme.linkColor} />
             <a href={link.url}>{link.display}</a>
           </StyledContact>
@@ -88,7 +87,7 @@ const Contact = ({ theme }) => {
       }))}
     </Wrapper>
   );
-};
+}
 
 Contact.propTypes = {
   ...themePropTypes,

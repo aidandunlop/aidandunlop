@@ -1,7 +1,7 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import Tooltip from 'rc-tooltip';
-import { ThemeManagerContext } from 'gatsby-styled-components-dark-mode';
+import { useStyledDarkMode } from 'gatsby-styled-components-dark-mode';
 
 import { scale } from '../utils/typography';
 import Title from './title';
@@ -49,14 +49,14 @@ const Tip = styled.div`
   }
 `;
 // TODO: move dark mode toggle to separate component
-const renderEmoji = (themeContext) => {
-  const { label, symbol } = themeContext.isDark
-    ? { label: 'light mode', symbol: '🌝' } : { label: 'dark mode', symbol: '🌚' };
+const renderEmoji = (isDark) => {
+  const { label, symbol } = isDark ? { label: 'light mode', symbol: '🌝' } : { label: 'dark mode', symbol: '🌚' };
   return <Emoji label={label} symbol={symbol} />;
 };
 
-const DarkModeToggle = () => {
-  const themeContext = useContext(ThemeManagerContext);
+function DarkModeToggle() {
+  const { isDark, toggleDark } = useStyledDarkMode();
+
   return (
     <Tooltip
       placement="bottom"
@@ -69,21 +69,21 @@ const DarkModeToggle = () => {
       <StyledEmoji
         role="img"
         aria-label="toggle theme"
-        onClick={() => themeContext.toggleDark()}
+        onClick={() => toggleDark()}
       >
-        {renderEmoji(themeContext)}
+        {renderEmoji(isDark)}
       </StyledEmoji>
     </Tooltip>
   );
-};
+}
 
-const Header = () => (
-  <>
+function Header() {
+  return (
     <StyledHeader>
       <Title />
       <DarkModeToggle />
     </StyledHeader>
-  </>
-);
+  );
+}
 
 export default Header;

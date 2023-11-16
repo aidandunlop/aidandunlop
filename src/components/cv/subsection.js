@@ -44,11 +44,11 @@ const StyledAccordionItemButton = styled(AccordionItemButton)`
     margin-bottom: 0;
   }
   
-  :focus {
+  &:focus {
     background-color: ${(props) => props.theme.shadowColor};
     outline-color: ${(props) => props.theme.linkColor};
   }
-  :hover {
+  &:hover {
     background-color: ${(props) => props.theme.shadowHoverColor};
   }
 `;
@@ -66,9 +66,9 @@ const PlusMinusIcon = styled.div`
   position: relative;
   width: 20px;
   height: 20px;
-  
-  :before,
-  :after{
+
+  &:before,
+  &:after {
     border-radius: 10px;
     content: "";
     position: absolute;
@@ -77,7 +77,7 @@ const PlusMinusIcon = styled.div`
   }
 
   /* vertical */
-  :before{
+  &:before{
       top: 0;
       left: 50%;
       width: 4px;
@@ -86,45 +86,48 @@ const PlusMinusIcon = styled.div`
   }
 
   /* horizontal */
-  :after{
+  &:after{
       top: 50%;
       left: 0;
       width: 100%;
       height: 4px;
       margin-top: -2px;
   }
-  
-  ${({ expanded }) => expanded && `
+
+  ${({ $expanded }) => $expanded && `
     cursor: pointer;
-    :before { 
-      transform: rotate(90deg); 
+    &:before {
+      transform: rotate(90deg);
     }
   `}
 `;
 
-const Subsection = ({ children, title }) => (
-  <AccordionItem uuid={title}>
-    <StyledAccordionItemHeading aria-level={4}>
-      <StyledAccordionItemButton>
-        <h4>
-          {title}
-        </h4>
-        <AccordionItemState>
-          {({ expanded }) => <PlusMinusIcon expanded={expanded} />}
-        </AccordionItemState>
-      </StyledAccordionItemButton>
-    </StyledAccordionItemHeading>
-    <StyledAccordionPanel>
-      <Wrapper>
-        <section>{children}</section>
-      </Wrapper>
-    </StyledAccordionPanel>
-  </AccordionItem>
-);
+function Subsection({ children, title, id }) {
+  return (
+    <AccordionItem uuid={id}>
+      <StyledAccordionItemHeading aria-level={4}>
+        <StyledAccordionItemButton>
+          <h4>
+            {title}
+          </h4>
+          <AccordionItemState>
+            {({ expanded }) => <PlusMinusIcon $expanded={expanded} />}
+          </AccordionItemState>
+        </StyledAccordionItemButton>
+      </StyledAccordionItemHeading>
+      <StyledAccordionPanel>
+        <Wrapper>
+          <section>{children}</section>
+        </Wrapper>
+      </StyledAccordionPanel>
+    </AccordionItem>
+  );
+}
 
 Subsection.propTypes = {
   children: PropTypes.node.isRequired,
   title: PropTypes.string.isRequired,
+  id: PropTypes.string.isRequired,
 };
 
 export default Subsection;
