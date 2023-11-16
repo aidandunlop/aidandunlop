@@ -48,7 +48,7 @@ const StyledAccordionItemButton = styled(AccordionItemButton)`
     background-color: ${(props) => props.theme.shadowColor};
     outline-color: ${(props) => props.theme.linkColor};
   }
-  :hover {
+  &:hover {
     background-color: ${(props) => props.theme.shadowHoverColor};
   }
 `;
@@ -67,8 +67,8 @@ const PlusMinusIcon = styled.div`
   width: 20px;
   height: 20px;
 
-  :before,
-  :after {
+  &:before,
+  &:after {
     border-radius: 10px;
     content: "";
     position: absolute;
@@ -77,7 +77,7 @@ const PlusMinusIcon = styled.div`
   }
 
   /* vertical */
-  :before{
+  &:before{
       top: 0;
       left: 50%;
       width: 4px;
@@ -86,7 +86,7 @@ const PlusMinusIcon = styled.div`
   }
 
   /* horizontal */
-  :after{
+  &:after{
       top: 50%;
       left: 0;
       width: 100%;
@@ -94,9 +94,9 @@ const PlusMinusIcon = styled.div`
       margin-top: -2px;
   }
 
-  ${({ expanded }) => expanded && `
+  ${({ $expanded }) => $expanded && `
     cursor: pointer;
-    :before {
+    &:before {
       transform: rotate(90deg);
     }
   `}
@@ -111,7 +111,7 @@ function Subsection({ children, title, id }) {
             {title}
           </h4>
           <AccordionItemState>
-            {({ expanded }) => <PlusMinusIcon expanded={expanded} />}
+            {({ expanded }) => <PlusMinusIcon $expanded={expanded} />}
           </AccordionItemState>
         </StyledAccordionItemButton>
       </StyledAccordionItemHeading>

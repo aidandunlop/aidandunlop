@@ -24,12 +24,13 @@ async function createPDF(outputFile, port = 9000) {
       const host = `http://localhost:${port}/cv`;
       console.log('Creating PDF from...', host);
       const browser = await puppeteer.launch({
-        headless: false,
+        headless: "new",
         args: ['--no-sandbox', '--disable-setuid-sandbox', '--font-render-hinting=none'],
       });
       const page = await browser.newPage();
       await page.emulateMediaFeatures([{ name: 'prefers-color-scheme', value: 'light' }]);
       await page.goto(host, { waitUntil: 'networkidle2' });
+      await page.emulateMediaType('print')
       await page.pdf({ path: outputFile, format: 'A4' });
       await browser.close();
       console.log('Created PDF.');

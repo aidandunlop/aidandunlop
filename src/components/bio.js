@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import DiscoBall from './disco-ball';
 
 const DiscoLink = styled.span`
-  :hover {
+  &:hover {
     color: ${(props) => props.theme.linkColor};
     cursor: pointer;
     text-decoration: underline;
@@ -62,16 +62,16 @@ function Bio() {
         </a>
       </p>
       {disco
-      && (
-      <>
-        <DiscoBall />
-        <StopDiscoBanner>
-          <button type="button" onClick={() => showDisco(false)}>
-            Stop this Aidan it&apos;s annoying
-          </button>
-        </StopDiscoBanner>
-      </>
-      )}
+        && (
+          <>
+            <DiscoBall />
+            <StopDiscoBanner>
+              <button type="button" onClick={() => showDisco(false)}>
+                Stop this Aidan it&apos;s annoying
+              </button>
+            </StopDiscoBanner>
+          </>
+        )}
     </>
   );
 }

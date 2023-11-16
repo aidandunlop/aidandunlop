@@ -9,7 +9,7 @@ const StyledTitle = styled.h3`
 
 const SectionWrapper = styled.div`
   @media print {
-    display: ${(props) => (props.skipPDF ? 'none' : 'block')};
+    display: ${(props) => (props.$skipPDF ? 'none' : 'block')};
 
   }
   ul {
@@ -20,7 +20,7 @@ const SectionWrapper = styled.div`
     margin-bottom: 0.1rem;
   }
   div {
-    margin-left: ${(props) => (props.isSingle ? '10px' : '0')};
+    margin-left: ${(props) => (props.$isSingle ? '10px' : '0')};
   }
 `;
 

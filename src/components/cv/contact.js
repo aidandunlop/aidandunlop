@@ -24,7 +24,7 @@ const Wrapper = styled.div`
 
 const StyledContact = styled.div`
   @media screen {
-    display: ${(props) => (props.hideOnWeb ? 'none' : 'flex')};
+    display: ${(props) => (props.$hideOnWeb ? 'none' : 'flex')};
   }
   display: flex;
   align-items: center;

@@ -24,7 +24,7 @@ const Layout = withTheme((props) => {
   const { theme, children } = props;
   const { changeThemeSetting } = useStyledDarkMode();
 
-  useEffect(() => changeThemeSetting(ThemeSetting.SYSTEM));
+  useEffect(() => changeThemeSetting(ThemeSetting.SYSTEM), []);
 
   return (
     <GlobalWrapper>

@@ -4,7 +4,7 @@ import styled from 'styled-components';
 
 const RowWrapper = styled.div`
   @media print {
-    display: ${(props) => (props.skipPDF ? 'none' : 'block')};
+    display: ${(props) => (props.$skipPDF ? 'none' : 'block')};
   }
   display: flex;
   justify-content: space-between;
@@ -14,7 +14,6 @@ const RowWrapper = styled.div`
 function Section({
   children, skipPDF, title,
 }) {
-  console.log(skipPDF);
   return (
     <RowWrapper $skipPDF={skipPDF}>
       <h1>{title}</h1>
